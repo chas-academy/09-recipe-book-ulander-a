@@ -3,17 +3,7 @@
   <li *ngFor="let recipe of recipes" 
   [class.selected]="recipe === selectedRecipe"
   (click)="onSelect(recipe)">
-    <span>{{recipe.id}}</span> {{recipe.name}}
+    {{recipe.name}}
   </li>
 </ul>
-
-<div *ngIf="selectedRecipe">
-  <h3>{{ selectedRecipe.name | uppercase }} Recipe</h3>
-  <div>
-    <span>id: </span>{{selectedRecipe.id}}</div>
-  <div>
-    <ol>
-      <li *ngFor="let ingredient of selectedRecipe.ingredients">{{ ingredient }}</li>
-    </ol>
-  </div>
-</div>
+<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
