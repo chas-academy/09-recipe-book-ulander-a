@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 
+import 'rxjs/add/operator/do';
+
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
@@ -18,6 +20,6 @@ export class FeaturedComponent implements OnInit {
 
   getRecipes(): void {
     this.recipeService.getRecipes()
-      .subscribe(recipes => this.recipes = recipes.slice(2, 4));
+      .subscribe(recipes => this.recipes = recipes.results.slice(1, 5));
   }
 }
