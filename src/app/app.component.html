@@ -2,6 +2,10 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <nav>
+      <a routerLink="/home">Home</a>
+    <a routerLink="/recipes">All recipes</a>
+  </nav>
 </div>
-<app-recipes></app-recipes>
 <app-messages></app-messages>
+<router-outlet></router-outlet>

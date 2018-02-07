@@ -7,6 +7,8 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeService } from './recipe.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { FeaturedComponent } from './featured/featured.component';
 
 
 @NgModule({
@@ -14,10 +16,12 @@ import { MessageService } from './message.service';
     AppComponent,
     RecipesComponent,
     RecipeDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    FeaturedComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [
     RecipeService,

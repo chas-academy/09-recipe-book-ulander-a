@@ -1,0 +1,9 @@
+<h3>Featured recipes</h3>
+<div>
+  <a *ngFor="let recipe of recipes"
+  routerLink="/detail/{{recipe.id}}">
+    <div>
+      <h4>{{recipe.name}}</h4>
+    </div>
+  </a>
+</div>

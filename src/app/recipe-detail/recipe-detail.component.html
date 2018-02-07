@@ -1,5 +1,4 @@
 <div *ngIf="recipe">
-
   <h3>{{ recipe.name | uppercase }} Recipe</h3>
   <div>
     <span>id: </span>{{recipe.id}}</div>
@@ -8,5 +7,5 @@
       <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
     </ol>
   </div>
-  
+  <button (click)="goBack()">go back</button>
 </div>
