@@ -1,14 +1,12 @@
 <div *ngIf="recipe">
-  <h3>{{ recipe.title | uppercase }}</h3>
+  <h3>{{ recipe.strMeal | uppercase }} Recipe</h3>
   <div>
-    <span>id: </span>{{ recipe.episode_id }}</div>
-    <div>
-      {{ recipe.opening_crawl }}
-    </div>
+    <span>id: </span>{{ recipe.idMeal }}</div>
+    <a href="{{ recipe.strSource }}">Link to original recipe</a>
   <!-- <div>
     <ol>
       <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
     </ol>
   </div> -->
-  <button (click)="goBack()">go back</button>
+  <!-- <button (click)="goBack()">go back</button> -->
 </div>

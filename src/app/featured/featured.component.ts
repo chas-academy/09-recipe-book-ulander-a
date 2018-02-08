@@ -20,6 +20,6 @@ export class FeaturedComponent implements OnInit {
 
   getRecipes(): void {
     this.recipeService.getRecipes()
-      .subscribe(recipes => this.recipes = recipes.results.slice(1, 5));
+      .subscribe(recipes => this.recipes = recipes.slice(1, 5));
   }
 }

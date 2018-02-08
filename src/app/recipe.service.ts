@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 import { Recipe } from './recipe';
 import { MessageService } from './message.service';
@@ -11,7 +12,7 @@ import { MessageService } from './message.service';
 @Injectable()
 export class RecipeService {
   private recipesUrl =
-    `https://swapi.co/api/films`;
+    ` http://www.themealdb.com/api/json/v1/1/latest.php`;
 
   constructor(
     private http: HttpClient,
@@ -44,7 +45,8 @@ export class RecipeService {
   getRecipes(): Observable<Recipe[]> {
     this.messageService.add('RecipeService: fetched recipes!');
     return this.http.get<Recipe[]>(this.recipesUrl)
-      // .do(res => console.log('HTTP Response:', res))
+      .do(res => console.log('HTTP Response:', res))
+      .map(res => res.meals)
       .pipe(
         catchError(this.handleError('getRecipes', []))
       );
@@ -52,8 +54,9 @@ export class RecipeService {
 
   /** GET recipe by id. Will 404 if id not found */
   getRecipe(id: number): Observable<Recipe> {
-    const url = `${this.recipesUrl}/${id}`;
+    const url = ` http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
     return this.http.get<Recipe>(url)
+    .map(res => res.meals[0])
     .do(res => console.log('HTTP Response:', res))
     .pipe(
       tap(_ => this.log(`fetched recipe id=${id}`)),

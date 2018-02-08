@@ -3,8 +3,8 @@
 <ul>
 
   <li *ngFor="let recipe of recipes">
-    <a routerLink="/detail/{{ recipe.episode_id }}">
-      {{ recipe.title }}
+    <a routerLink="/detail/{{ recipe.idMeal }}">
+      {{ recipe.strMeal }}
     </a>
   </li>
   
