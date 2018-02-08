@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturedComponent } from './featured/featured.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FeaturedComponent } from './featured/featured.component';
     RecipesComponent,
     RecipeDetailComponent,
     MessagesComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

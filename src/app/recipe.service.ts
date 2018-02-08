@@ -7,6 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 import { Recipe } from './recipe';
+import { Category } from './category';
 import { MessageService } from './message.service';
 
 @Injectable()
@@ -46,10 +47,10 @@ export class RecipeService {
     this.messageService.add('RecipeService: fetched recipes!');
     const url = `${this.recipesUrl}${param}`;
     return this.http.get<Recipe[]>(url)
-      .do(res => console.log('HTTP Response:', res))
+      // .do(res => console.log('HTTP Response:', res))
       .map(res => res.meals)
       .pipe(
-        catchError(this.handleError('getRecipes', []))
+      catchError(this.handleError('getRecipes', []))
       );
   }
 
@@ -57,12 +58,22 @@ export class RecipeService {
   getRecipe(id: number): Observable<Recipe> {
     const url = `${this.recipesUrl}/lookup.php?i=${id}`;
     return this.http.get<Recipe>(url)
-    .map(res => res.meals[0])
-    .do(res => console.log('HTTP Response:', res))
-    .pipe(
+      .map(res => res.meals[0])
+      // .do(res => console.log('HTTP Response:', res))
+      .pipe(
       tap(_ => this.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
-    );
+      );
+  }
+
+  getCategories(): Observable<Category> {
+    const url = `${this.recipesUrl}/list.php?c=list`;
+    return this.http.get<Category[]>(url)
+      .map(res => res.meals)
+      // .do(res => console.log(res))
+      .pipe(
+      catchError(this.handleError('getCategories', []))
+      );
   }
 
 }
