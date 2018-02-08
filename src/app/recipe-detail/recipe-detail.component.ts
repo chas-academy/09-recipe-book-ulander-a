@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -27,7 +28,7 @@ export class RecipeDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipe(id)
       .subscribe(recipe => this.recipe = recipe);
-  }
+    }
 
   goBack(): void {
     this.location.back();

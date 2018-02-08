@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 @Injectable()
 export class RecipeService {
   private recipesUrl =
-    `https://swapi.co/api/films/`;
+    `https://swapi.co/api/films`;
 
   constructor(
     private http: HttpClient,
@@ -44,7 +44,7 @@ export class RecipeService {
   getRecipes(): Observable<Recipe[]> {
     this.messageService.add('RecipeService: fetched recipes!');
     return this.http.get<Recipe[]>(this.recipesUrl)
-      .do(res => console.log('HTTP Response:', res))
+      // .do(res => console.log('HTTP Response:', res))
       .pipe(
         catchError(this.handleError('getRecipes', []))
       );
@@ -53,7 +53,9 @@ export class RecipeService {
   /** GET recipe by id. Will 404 if id not found */
   getRecipe(id: number): Observable<Recipe> {
     const url = `${this.recipesUrl}/${id}`;
-    return this.http.get<Recipe>(url).pipe(
+    return this.http.get<Recipe>(url)
+    .do(res => console.log('HTTP Response:', res))
+    .pipe(
       tap(_ => this.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
     );
