@@ -12,7 +12,7 @@ import { MessageService } from './message.service';
 @Injectable()
 export class RecipeService {
   private recipesUrl =
-    ` http://www.themealdb.com/api/json/v1/1/latest.php`;
+    `http://www.themealdb.com/api/json/v1/1/`;
 
   constructor(
     private http: HttpClient,
@@ -42,9 +42,10 @@ export class RecipeService {
     };
   }
 
-  getRecipes(): Observable<Recipe[]> {
+  getRecipes(param: string): Observable<Recipe[]> {
     this.messageService.add('RecipeService: fetched recipes!');
-    return this.http.get<Recipe[]>(this.recipesUrl)
+    const url = `${this.recipesUrl}${param}`;
+    return this.http.get<Recipe[]>(url)
       .do(res => console.log('HTTP Response:', res))
       .map(res => res.meals)
       .pipe(
@@ -54,7 +55,7 @@ export class RecipeService {
 
   /** GET recipe by id. Will 404 if id not found */
   getRecipe(id: number): Observable<Recipe> {
-    const url = ` http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    const url = `${this.recipesUrl}/lookup.php?i=${id}`;
     return this.http.get<Recipe>(url)
     .map(res => res.meals[0])
     .do(res => console.log('HTTP Response:', res))

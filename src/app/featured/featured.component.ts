@@ -19,7 +19,7 @@ export class FeaturedComponent implements OnInit {
   }
 
   getRecipes(): void {
-    this.recipeService.getRecipes()
-      .subscribe(recipes => this.recipes = recipes.slice(1, 5));
+    this.recipeService.getRecipes('latest.php')
+      .subscribe(recipes => this.recipes = recipes.slice(0, 4));
   }
 }
