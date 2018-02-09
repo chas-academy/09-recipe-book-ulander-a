@@ -9,7 +9,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  categories: Category[];
+  categories = [];
 
   constructor(
     private recipeService: RecipeService,

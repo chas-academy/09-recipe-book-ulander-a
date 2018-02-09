@@ -11,6 +11,8 @@ import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturedComponent } from './featured/featured.component';
 import { NavComponent } from './nav/nav.component';
+import { ListComponent } from './list/list.component';
+import { DatabaseService } from './database.service';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { NavComponent } from './nav/nav.component';
     RecipeDetailComponent,
     MessagesComponent,
     FeaturedComponent,
-    NavComponent
+    NavComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { NavComponent } from './nav/nav.component';
   ],
   providers: [
     RecipeService,
-    MessageService
+    MessageService,
+    DatabaseService
   ],
   bootstrap: [AppComponent]
 })
