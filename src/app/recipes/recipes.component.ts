@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-recipes',
@@ -12,21 +13,26 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipesComponent implements OnInit {
   @Input() recipes: Recipe[];
+  @Input() category: Category;
 
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private location: Location
   ) { }
 
   ngOnInit() {
     this.getRecipes();
+    this.getCategory();
   }
 
   getRecipes(): void {
     const category = this.route.snapshot.paramMap.get('category');
     this.recipeService.getRecipes('filter.php?c=' + category)
       .subscribe(recipes => this.recipes = recipes);
+  }
+
+  getCategory(): void {
+    this.category = this.route.snapshot.paramMap.get('category');
   }
 
 }
