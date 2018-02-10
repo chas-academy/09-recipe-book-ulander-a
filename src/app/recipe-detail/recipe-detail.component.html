@@ -2,11 +2,12 @@
   <h3>{{ recipe.strMeal | uppercase }} Recipe</h3>
   <div>
     <span>id: </span>{{ recipe.idMeal }}</div>
-    <a href="{{ recipe.strSource }}">Link to original recipe</a>
+  <a href="{{ recipe.strSource }}">Link to original recipe</a>
   <!-- <div>
     <ol>
       <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
     </ol>
   </div> -->
-  <!-- <button (click)="goBack()">go back</button> -->
+  <button (click)="goBack()">Go back</button>
+  <button (click)="saveRecipe()">Add to list</button>
 </div>

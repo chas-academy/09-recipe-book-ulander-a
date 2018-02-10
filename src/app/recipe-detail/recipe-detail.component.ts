@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
-import { debug } from 'util';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,7 +17,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private location: Location
+    private location: Location,
+    private databaseService: DatabaseService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +33,11 @@ export class RecipeDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  saveRecipe(recipe) {
+    this.databaseService.postData(recipe)
+      .subscribe(data => this.recipe);
   }
 
 }

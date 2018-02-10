@@ -1,9 +1,9 @@
 {
-  "list" : [ 
-      {
+  "list": [
+    {
       "id": 1,
-      "name" : "Pineapple Pizza",
-      "ingredients" : [
+      "name": "Pineapple Pizza",
+      "ingredients": [
         "Pizza dough",
         "Cheese",
         "Tomato Sauce",
@@ -12,8 +12,8 @@
     },
     {
       "id": 2,
-      "name" : "Homemade Mayonaisse",
-      "ingredients" : [
+      "name": "Homemade Mayonaisse",
+      "ingredients": [
         "Egg yolk",
         "Cooking oil",
         "Dijon mustard",
