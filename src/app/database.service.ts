@@ -18,15 +18,14 @@ export class DatabaseService {
   ) { }
 
   getData(): Observable<any> {
-    return this.http.get(this.url)
-      .do(res => console.log(res));
+    return this.http.get(this.url);
+      // .do(res => console.log(res));
   }
 
   postData(data): Observable<any> {
-    return this.http.post(this.url, data)
-      .do(res => console.log(res))
+    return this.http.post(this.url, {'recipeId' : data})
       .pipe(
-      catchError(this.handleError('postData', data))
+        catchError(this.handleError('postData', data))
       );
   }
 

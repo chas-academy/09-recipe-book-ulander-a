@@ -1,25 +1,20 @@
 {
   "list": [
     {
-      "id": 1,
-      "name": "Pineapple Pizza",
-      "ingredients": [
-        "Pizza dough",
-        "Cheese",
-        "Tomato Sauce",
-        "Pineapple"
-      ]
+      "recipeId": 52855,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Homemade Mayonaisse",
-      "ingredients": [
-        "Egg yolk",
-        "Cooking oil",
-        "Dijon mustard",
-        "White vinegar",
-        "Salt and pepper"
-      ]
+      "recipeId": 52876,
+      "id": 2
+    },
+    {
+      "recipeId": 52835,
+      "id": 3
+    },
+    {
+      "recipeId": 52908,
+      "id": 4
     }
   ]
 }
