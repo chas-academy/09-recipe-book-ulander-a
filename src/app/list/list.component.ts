@@ -28,8 +28,15 @@ export class ListComponent implements OnInit {
 
   getRecipes(recipeIds) {
     recipeIds.forEach(element => {
-      this.recipeService.getRecipe(element.recipeId)
+      console.log(element);
+      this.recipeService.getRecipe(element.id)
         .subscribe(res => this.recipes.push(res));
     });
+  }
+
+  removeRecipe(recipe) {
+    this.databaseService.deleteData(recipe)
+      .subscribe();
+    // .do(console.log('deleted recipe ' + recipe));
   }
 }

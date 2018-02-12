@@ -57,6 +57,7 @@ export class RecipeService {
   /** GET recipe by id. Will 404 if id not found */
   getRecipe(id: number): Observable<Recipe> {
     const url = `${this.recipesUrl}/lookup.php?i=${id}`;
+    console.log(url);
     return this.http.get<Recipe>(url)
       .map(res => res.meals[0])
       // .do(res => console.log('HTTP Response:', res))

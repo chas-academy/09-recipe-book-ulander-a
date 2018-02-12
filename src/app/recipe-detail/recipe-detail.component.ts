@@ -38,6 +38,6 @@ export class RecipeDetailComponent implements OnInit {
   saveRecipe(): void {
     const recipeId = +this.route.snapshot.paramMap.get('id');
     this.databaseService.postData(recipeId)
-      .subscribe(wtf => console.log(wtf));
+      .subscribe();
   }
 }

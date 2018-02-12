@@ -19,13 +19,19 @@ export class DatabaseService {
 
   getData(): Observable<any> {
     return this.http.get(this.url);
-      // .do(res => console.log(res));
   }
 
   postData(data): Observable<any> {
-    return this.http.post(this.url, {'recipeId' : data})
+    return this.http.post(this.url, { 'id': data })
       .pipe(
         catchError(this.handleError('postData', data))
+      );
+  }
+
+  deleteData(id): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`)
+      .pipe(
+        catchError(this.handleError('deleteData', id))
       );
   }
 
