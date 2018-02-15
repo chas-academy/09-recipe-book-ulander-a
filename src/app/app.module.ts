@@ -42,4 +42,5 @@ import { AuthService } from './login.service';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
