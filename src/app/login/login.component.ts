@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 import { AuthService } from '../login.service';
 import { RouterModule } from '@angular/router';
@@ -7,6 +8,8 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-login',
   template: `
+  <h1>Login</h1>
+  <p *ngIf="isLoggedIn()">You are already logged in!</p>
 <form [formGroup]="form">
     <fieldset>
         <legend>Login</legend>
@@ -45,10 +48,14 @@ export class LoginComponent {
       this.authService.login(val.email, val.password)
         .subscribe(
           () => {
-            console.log('User is logged in');
+            console.log('User is logged in? ' + this.isLoggedIn());
             // this.router.navigateByUrl('/');
           }
         );
     }
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 }
