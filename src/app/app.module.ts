@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -13,7 +14,8 @@ import { FeaturedComponent } from './featured/featured.component';
 import { NavComponent } from './nav/nav.component';
 import { ListComponent } from './list/list.component';
 import { DatabaseService } from './database.service';
-
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -23,17 +25,20 @@ import { DatabaseService } from './database.service';
     MessagesComponent,
     FeaturedComponent,
     NavComponent,
-    ListComponent
+    ListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     RecipeService,
     MessageService,
-    DatabaseService
+    DatabaseService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
