@@ -1,13 +1,5 @@
-<div *ngIf="recipe">
-  <h3>{{ recipe.strMeal | uppercase }} Recipe</h3>
-  <div>
-    <span>id: </span>{{ recipe.idMeal }}</div>
-  <a href="{{ recipe.strSource }}">Link to original recipe</a>
-  <!-- <div>
-    <ol>
-      <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
-    </ol>
-  </div> -->
-  <button (click)="goBack()">Go back</button>
-  <button (click)="saveRecipe()">Add to list</button>
-</div>
+<span *ngIf="recipe">
+    {{ recipe | json }}
+</span>
+
+<button disabled>Add to list</button>Add this recipe to your list

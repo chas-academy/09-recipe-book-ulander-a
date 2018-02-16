@@ -1,0 +1,9 @@
+<h1>Search for recipes</h1>
+
+<form [formGroup]="searchForm">
+    
+  <input name="query" #query>
+
+    <button (click)="search(query)">Search</button>
+
+</form>

@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RecipesComponent } from './recipes/recipes.component';
-import { FeaturedComponent } from './featured/featured.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { ListComponent } from './list/list.component';
+import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: 'index', component: FeaturedComponent },
-  { path: 'recipes/:category', component: RecipesComponent },
-  { path: 'detail/:id', component: RecipeDetailComponent },
-  { path: 'list', component: ListComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'index', component: IndexComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'recipe/:id', component: RecipeDetailComponent }
 ];
 
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

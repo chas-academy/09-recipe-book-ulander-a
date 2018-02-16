@@ -4,29 +4,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { RecipeService } from './recipe.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
-import { FeaturedComponent } from './featured/featured.component';
-import { NavComponent } from './nav/nav.component';
-import { ListComponent } from './list/list.component';
-import { DatabaseService } from './database.service';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login.service';
+import { SearchComponent } from './search/search.component';
+import { IndexComponent } from './index/index.component';
+import { ApiService } from './api.service';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesComponent,
-    RecipeDetailComponent,
     MessagesComponent,
-    FeaturedComponent,
-    NavComponent,
-    ListComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent,
+    IndexComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +30,8 @@ import { AuthService } from './login.service';
     ReactiveFormsModule
   ],
   providers: [
-    RecipeService,
     MessageService,
-    DatabaseService,
+    ApiService,
     AuthService
   ],
   bootstrap: [AppComponent]

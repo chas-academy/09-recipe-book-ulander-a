@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { Recipe } from '../recipe';
-import { RecipeService } from '../recipe.service';
-import { DatabaseService } from '../database.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,32 +10,22 @@ import { DatabaseService } from '../database.service';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() recipe: Recipe;
+  recipe  = {};
 
   constructor(
+    private apiService: ApiService,
     private route: ActivatedRoute,
-    private recipeService: RecipeService,
-    private location: Location,
-    private databaseService: DatabaseService
+    private location: Location
   ) { }
 
-  ngOnInit(): void {
-    this.getRecipe();
+  ngOnInit() {
+    this.get();
   }
 
-  getRecipe(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.recipeService.getRecipe(id)
-      .subscribe(recipe => this.recipe = recipe);
-    }
+  get() {
+    const id = this.route.snapshot.paramMap.get('id');
 
-  goBack(): void {
-    this.location.back();
-  }
-
-  saveRecipe(): void {
-    const recipeId = +this.route.snapshot.paramMap.get('id');
-    this.databaseService.postData(recipeId)
-      .subscribe();
+    this.apiService.getRecipe(id)
+      .subscribe(res => this.recipe = res);
   }
 }

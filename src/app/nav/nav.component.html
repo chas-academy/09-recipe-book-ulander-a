@@ -1,8 +1,0 @@
-<nav>
-  <a routerLink="/index">Home</a>
-  <a *ngFor="let category of categories" routerLink="/recipes/{{ category.strCategory }}">
-    {{ category.strCategory }}
-  </a>
-  <a routerLink="/list">My List</a>
-  <a routerLink="/login">Login</a>
-</nav>

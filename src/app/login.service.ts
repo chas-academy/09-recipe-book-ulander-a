@@ -6,8 +6,6 @@ import 'rxjs/add/operator/shareReplay';
 
 import * as moment from 'moment';
 
-import { User } from './user';
-
 @Injectable()
 export class AuthService {
 
@@ -15,7 +13,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('http://api.recipes.dev/api/auth/login', { email, password })
+    return this.http.post<Object>('http://api.recipes.dev/api/auth/login', { email, password })
       .do(res => this.setSession(res))
       .do(res => console.log(res))
       .shareReplay();

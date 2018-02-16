@@ -1,0 +1,12 @@
+<h2>Featured recipes</h2>
+
+<div *ngFor="let recipe of recipes">
+
+  <img src="{{ recipe.image_url }}" alt="Photo seems to be missing">
+  <h2>
+    <a routerLink="/recipe/{{ recipe.recipe_id }}">
+        {{ recipe.title }}
+    </a>
+  </h2>
+
+</div>

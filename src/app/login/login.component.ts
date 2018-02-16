@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { AuthService } from '../login.service';
-import { RouterModule } from '@angular/router';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-login',
@@ -31,9 +32,12 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
-    private router: RouterModule) {
+    private router: RouterModule,
+    private messageService: MessageService
+  ) {
 
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -48,7 +52,7 @@ export class LoginComponent {
       this.authService.login(val.email, val.password)
         .subscribe(
           () => {
-            console.log('User is logged in? ' + this.isLoggedIn());
+            this.messageService.add('Login successful!');
             // this.router.navigateByUrl('/');
           }
         );
