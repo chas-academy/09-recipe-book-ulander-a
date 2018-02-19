@@ -13,6 +13,8 @@ import { SearchComponent } from './search/search.component';
 import { IndexComponent } from './index/index.component';
 import { ApiService } from './api.service';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { NavComponent } from './nav/nav.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     LoginComponent,
     SearchComponent,
     IndexComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    NavComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

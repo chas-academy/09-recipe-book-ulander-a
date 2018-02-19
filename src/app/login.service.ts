@@ -26,6 +26,12 @@ export class AuthService {
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
+  getUser() {
+    const token = localStorage.getItem('access_token');
+
+    return this.http.post<any>('http://api.recipes.dev/api/auth/me?', { token });
+  }
+
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expires_at');

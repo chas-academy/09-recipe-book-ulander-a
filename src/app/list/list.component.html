@@ -1,0 +1,13 @@
+<h1>My favorite recipes</h1>
+
+<ng-container *ngIf="recipes.length > 0; else elseTemplate">
+  <ul>
+    <li *ngFor="let recipe of recipes">
+      {{ recipe | json }}
+      <button (click)="remove(recipe)">Remove</button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #elseTemplate>
+  You have no favorites yet. Try adding some!
+</ng-template>

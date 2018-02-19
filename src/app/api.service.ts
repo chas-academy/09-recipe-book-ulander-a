@@ -18,7 +18,7 @@ export class ApiService {
     private messageService: MessageService
   ) { }
 
-  searchRecipes(query): Observable<object> {
+  searchRecipes(query): Observable<any> {
     return this.http.get(`${this.url}/query/${query}`);
   }
 
@@ -28,5 +28,18 @@ export class ApiService {
 
   getTrending(): Observable<any> {
     return this.http.get(`${this.url}/trending`);
+  }
+
+  getList(userId): Observable<any> {
+    return this.http.get(`http://api.recipes.dev/api/db/list/${userId}`);
+  }
+
+  addToList(userId, itemId): Observable<any> {
+    console.log('userId: ' + userId + ' itemId: ' + itemId);
+    return this.http.post(`http://api.recipes.dev/api/db/list/add`, { 'user_id' : userId, 'recipe_id' : itemId });
+  }
+
+  removeFromList(userId, item): Observable<any> {
+    return this.http.delete(`http://api.recipes.dev/api/db/list/${userId}/delete/${item}`);
   }
 }

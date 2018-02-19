@@ -10,6 +10,8 @@ import { ApiService } from '../api.service';
 })
 export class SearchComponent implements OnInit {
   searchForm;
+  query;
+  results = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,11 +22,21 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   search(query): void {
+    this.query = query;
+
     this.apiService.searchRecipes(query.value)
-      .subscribe(res => console.log(res));
+      .subscribe(res => this.results = res.recipes);
   }
+
+  // more(): void {
+  //   let page = 2;
+
+  //   this.apiService.searchRecipes(this.query.value + `&page=${page}`)
+  //     .subscribe(res => this.results.push(res));
+
+  //     page++;
+  // }
 }

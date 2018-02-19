@@ -53,7 +53,7 @@ export class LoginComponent {
         .subscribe(
           () => {
             this.messageService.add('Login successful!');
-            // this.router.navigateByUrl('/');
+            this.authService.getUser();
           }
         );
     }
