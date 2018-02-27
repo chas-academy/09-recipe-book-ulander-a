@@ -15,6 +15,7 @@ import { ApiService } from './api.service';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { NavComponent } from './nav/nav.component';
 import { ListComponent } from './list/list.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListComponent } from './list/list.component';
     IndexComponent,
     RecipeDetailComponent,
     NavComponent,
-    ListComponent
+    ListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

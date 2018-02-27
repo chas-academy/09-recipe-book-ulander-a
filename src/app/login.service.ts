@@ -12,6 +12,11 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
+  register(name: string, email: string, password: string) {
+    return this.http.post<Object>('http://api.recipes.dev/api/auth/register', { name, email, password})
+      .do(res => console.log(res));
+  }
+
   login(email: string, password: string) {
     return this.http.post<Object>('http://api.recipes.dev/api/auth/login', { email, password })
       .do(res => this.setSession(res))
