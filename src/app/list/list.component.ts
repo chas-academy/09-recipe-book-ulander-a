@@ -34,6 +34,14 @@ export class ListComponent implements OnInit {
       );
   }
 
+  createList(name): void {
+    this.authService.getUser()
+    .subscribe(
+      user => this.apiService.createList(user.id, name)
+        .subscribe(response => console.log(response))
+    );
+  }
+
     // createList(name): void {
   //   this.authService.getUser()
   //     .subscribe(
