@@ -1,6 +1,20 @@
-<h1>My lists</h1>
+<h1>Lists</h1>
 
-<ng-container *ngIf="lists.length > 0; else elseTemplate">
+<app-list-form></app-list-form>
+
+<app-list-child [lists]="lists"></app-list-child>
+
+<!-- <h2>Create new list</h2>
+<form [ngFormModel]="myForm">
+    <div class="form-group">
+        <label for="listName">List name</label>
+        <input type="text" class="form-control" id="listName" name="listName">
+      </div>
+  </form> -->
+
+
+<!-- <ng-container *ngIf="lists.length > 0; else elseTemplate">
+  <h3>My lists:</h3>
   <ul>
     <li *ngFor="let list of lists">
       {{ list | json }}
@@ -10,4 +24,4 @@
 </ng-container>
 <ng-template #elseTemplate>
   You have no lists yet. Try adding some!
-</ng-template>
+</ng-template> -->
