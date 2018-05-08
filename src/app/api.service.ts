@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 
 @Injectable()
 export class ApiService {
-  url = 'http://api.recipes.dev/api/recipes';
+  url = 'http://api.recipes.test/api/recipes';
 
   constructor(
     private http: HttpClient,
@@ -30,16 +30,21 @@ export class ApiService {
     return this.http.get(`${this.url}/trending`);
   }
 
-  getList(userId): Observable<any> {
-    return this.http.get(`http://api.recipes.dev/api/db/list/${userId}`);
+  getLists(userId): Observable<any> {
+    return this.http.get(`http://api.recipes.test/api/db/users/${userId}/collections`);
+  }
+
+  createList(name): Observable<any> {
+    console.log('creating new list called: ', name);
+    return this.http.post(`http://api.recipes.test/api/db/list/create`, {'list_name' : name});
   }
 
   addToList(userId, itemId): Observable<any> {
     console.log('userId: ' + userId + ' itemId: ' + itemId);
-    return this.http.post(`http://api.recipes.dev/api/db/list/add`, { 'user_id' : userId, 'recipe_id' : itemId });
+    return this.http.post(`http://api.recipes.test/api/db/list/add`, { 'user_id' : userId, 'recipe_id' : itemId });
   }
 
   removeFromList(userId, item): Observable<any> {
-    return this.http.delete(`http://api.recipes.dev/api/db/list/${userId}/delete/${item}`);
+    return this.http.delete(`http://api.recipes.test/api/db/list/${userId}/delete/${item}`);
   }
 }

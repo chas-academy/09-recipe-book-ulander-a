@@ -10,7 +10,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  recipes = [];
+  lists = [];
 
   constructor(
     private authService: AuthService,
@@ -19,21 +19,27 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getList();
+    this.getLists();
   }
 
-  getList(): void {
+  getLists(): void {
     this.authService.getUser()
       .subscribe(
-        user => this.apiService.getList(user.id)
-          .subscribe(items => items.forEach(item => {
-            console.log(item);
-            this.apiService.getRecipe(item)
-              .subscribe(result => this.recipes.push(result));
+        user => this.apiService.getLists(user.id)
+          .subscribe(lists => lists.forEach(list => {
+            console.log(list);
+            this.lists.push(list);
           })
           )
       );
   }
+
+    // createList(name): void {
+  //   this.authService.getUser()
+  //     .subscribe(
+  //       user => this.apiService.createList(name)
+  //     )
+  // }
 
   // add(item): void {
   //   this.authService.getUser()
@@ -44,11 +50,11 @@ export class ListComponent implements OnInit {
   //     );
   // }
 
-  remove(item): void {
-    this.authService.getUser()
-      .subscribe(
-        user => this.apiService.removeFromList(user, item.recipe.recipe_id)
-          .subscribe(res => this.messageService.add('Recipe removed!'))
-      );
-  }
+  // remove(item): void {
+  //   this.authService.getUser()
+  //     .subscribe(
+  //       user => this.apiService.removeFromList(user, item.recipe.recipe_id)
+  //         .subscribe(res => this.messageService.add('Recipe removed!'))
+  //     );
+  // }
 }
