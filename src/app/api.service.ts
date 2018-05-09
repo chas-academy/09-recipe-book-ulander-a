@@ -34,9 +34,9 @@ export class ApiService {
     return this.http.get(`http://api.recipes.test/api/db/users/${userId}/collections`);
   }
 
-  createList(userId, name): Observable<any> {
+  createList(user_id: number, name: string): Observable<any> {
     console.log('creating new list called: ', name);
-    return this.http.post(`http://api.recipes.test/api/db/users/${userId}/collections`, {'list_name' : name});
+    return this.http.post(`http://api.recipes.test/api/db/users/${user_id}/collections`, {name, user_id});
   }
 
   addToList(userId, itemId): Observable<any> {

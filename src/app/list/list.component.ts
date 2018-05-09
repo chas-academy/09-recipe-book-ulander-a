@@ -33,36 +33,4 @@ export class ListComponent implements OnInit {
           )
       );
   }
-
-  createList(name): void {
-    this.authService.getUser()
-    .subscribe(
-      user => this.apiService.createList(user.id, name)
-        .subscribe(response => console.log(response))
-    );
-  }
-
-    // createList(name): void {
-  //   this.authService.getUser()
-  //     .subscribe(
-  //       user => this.apiService.createList(name)
-  //     )
-  // }
-
-  // add(item): void {
-  //   this.authService.getUser()
-  //     .subscribe(
-  //       user => this.apiService.addToList(user, item.id)
-  //         .subscribe(res => this.messageService.add('Recipe added!')
-  //         )
-  //     );
-  // }
-
-  // remove(item): void {
-  //   this.authService.getUser()
-  //     .subscribe(
-  //       user => this.apiService.removeFromList(user, item.recipe.recipe_id)
-  //         .subscribe(res => this.messageService.add('Recipe removed!'))
-  //     );
-  // }
 }

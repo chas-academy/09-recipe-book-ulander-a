@@ -56,9 +56,9 @@ export class RegisterComponent {
       this.authService.register(val.name, val.email, val.password)
         .subscribe(
           () => {
-            this.messageService.add('Register successful')
+            this.messageService.add('Register successful');
           }
-        )
+        );
     }
   }
 }
