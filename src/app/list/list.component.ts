@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 import { AuthService } from '../login.service';
 import { MessageService } from '../message.service';
@@ -23,6 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   getLists(): void {
+    this.lists = [];
     this.authService.getUser()
       .subscribe(
         user => this.apiService.getLists(user.id)

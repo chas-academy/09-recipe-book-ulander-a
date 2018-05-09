@@ -1,5 +1,5 @@
 <h1>Lists</h1>
 
-<app-list-form></app-list-form>
+<app-list-form (listCreated)="getLists()"></app-list-form>
 
 <app-list-child [lists]="lists"></app-list-child>

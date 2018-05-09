@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../login.service';
@@ -11,6 +11,8 @@ import { ApiService } from '../api.service';
   styleUrls: ['./list-form.component.css']
 })
 export class ListFormComponent {
+  @Output() listCreated = new EventEmitter<string>();
+
   name = new FormControl('', [
     Validators.required,
     Validators.minLength(3)
@@ -34,7 +36,7 @@ export class ListFormComponent {
     .subscribe(
       user => this.apiService.createList(user.id, listName)
       .subscribe(
-        list => console.log(list)
+        list => this.listCreated.emit('complete')
       )
     );
 
