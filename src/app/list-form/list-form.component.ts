@@ -36,7 +36,7 @@ export class ListFormComponent {
     .subscribe(
       user => this.apiService.createList(user.id, listName)
       .subscribe(
-        list => this.listCreated.emit('complete')
+        response => this.listCreated.emit('complete')
       )
     );
 

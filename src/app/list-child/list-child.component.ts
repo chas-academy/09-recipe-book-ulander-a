@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+import { ApiService } from '../api.service';
+import { AuthService } from '../login.service';
 
 @Component({
   selector: 'app-list-child',
@@ -6,9 +9,18 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./list-child.component.css']
 })
 export class ListChildComponent {
+  @Input() lists: Array<any> = [];
 
-  @Input()
+  @Output() listDeleted = new EventEmitter<string>();
 
-  lists: Array<any> = [];
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthService
+  ) { }
+
+  remove(list): void {
+    this.apiService.deleteList(list.id)
+      .subscribe(response => this.listDeleted.emit('complete'));
+  }
 
 }

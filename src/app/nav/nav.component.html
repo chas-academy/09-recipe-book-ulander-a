@@ -1,3 +1,13 @@
-<p>
-  nav works!
-</p>
+<ng-container *ngIf="loggedIn">
+  <p>You are logged in!</p>
+  <a routerLink="/index">Home</a>
+  <a routerLink="/search">Search</a>
+  <a routerLink="/lists">Lists</a>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <a routerLink="/index">Home</a>
+  <a routerLink="/login">Login</a>
+  <a routerLink="/search">Search</a>
+  <a routerLink="/register">Register</a>
+</ng-template>

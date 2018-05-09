@@ -30,13 +30,18 @@ export class ApiService {
     return this.http.get(`${this.url}/trending`);
   }
 
-  getLists(userId): Observable<any> {
+  getLists(userId: number): Observable<any> {
     return this.http.get(`http://api.recipes.test/api/db/users/${userId}/collections`);
   }
 
   createList(user_id: number, name: string): Observable<any> {
     console.log('creating new list called: ', name);
     return this.http.post(`http://api.recipes.test/api/db/users/${user_id}/collections`, {name, user_id});
+  }
+
+  deleteList(listId): Observable<any> {
+    console.log('deleting list:', listId);
+    return this.http.delete(`http://api.recipes.test/api/db/collections/${listId}`);
   }
 
   addToList(userId, itemId): Observable<any> {
