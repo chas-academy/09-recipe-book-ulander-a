@@ -3,7 +3,13 @@
   <ul>
     <li *ngFor="let list of lists">
       {{ list | json }}
-      <button (click)="remove(list)">Remove</button>
+      <ul>
+        <li *ngFor="let recipe of list.recipes">
+          {{ recipe | json }}
+          <button (click)="deleteRecipe(recipe)">Remove</button>
+        </li>
+      </ul>
+      <button (click)="deleteList(list)">Remove</button>
     </li>
   </ul>
 </ng-container>

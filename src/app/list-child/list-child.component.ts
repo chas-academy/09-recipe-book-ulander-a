@@ -11,16 +11,21 @@ import { AuthService } from '../login.service';
 export class ListChildComponent {
   @Input() lists: Array<any> = [];
 
-  @Output() listDeleted = new EventEmitter<string>();
+  @Output() listUpdated = new EventEmitter<string>();
 
   constructor(
     private apiService: ApiService,
     private authService: AuthService
   ) { }
 
-  remove(list): void {
+  deleteList(list): void {
     this.apiService.deleteList(list.id)
-      .subscribe(response => this.listDeleted.emit('complete'));
+      .subscribe(response => this.listUpdated.emit('complete'));
+  }
+
+  deleteRecipe(recipe): void {
+    this.apiService.removeFromList(recipe.id)
+      .subscribe(response => this.listUpdated.emit('complete'));
   }
 
 }

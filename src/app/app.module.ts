@@ -18,6 +18,8 @@ import { ListComponent } from './list/list.component';
 import { RegisterComponent } from './register/register.component';
 import { ListChildComponent } from './list-child/list-child.component';
 import { ListFormComponent } from './list-form/list-form.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RecipeDetailChildComponent } from './recipe-detail-child/recipe-detail-child.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ListFormComponent } from './list-form/list-form.component';
     ListComponent,
     RegisterComponent,
     ListChildComponent,
-    ListFormComponent
+    ListFormComponent,
+    LogoutComponent,
+    RecipeDetailChildComponent
   ],
   imports: [
     BrowserModule,

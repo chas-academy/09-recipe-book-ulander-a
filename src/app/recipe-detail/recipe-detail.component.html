@@ -2,4 +2,5 @@
     {{ recipe | json }}
 </span>
 
-<button (click)="add(recipe.recipe)">Add to list</button>
+<app-recipe-detail-child [recipe]="recipe">
+</app-recipe-detail-child>

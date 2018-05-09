@@ -13,12 +13,10 @@ export class NavComponent implements OnInit {
     private authService: AuthService
   ) { }
 
+  // TODO: Add Output to automatically update nav-status
+
   ngOnInit() {
-    if (this.authService.isLoggedIn) {
-      this.loggedIn = true;
-    } else {
-      this.loggedIn = false;
-    }
+    this.loggedIn = this.authService.isLoggedIn();
   }
 
 }

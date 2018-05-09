@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ApiService } from '../api.service';
-import { AuthService } from '../login.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,8 +14,6 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private authService: AuthService,
-    private messageService: MessageService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
@@ -33,14 +29,6 @@ export class RecipeDetailComponent implements OnInit {
       .subscribe(res => this.recipe = res);
   }
 
-  add(item): void {
-    this.authService.getUser()
-      .subscribe(
-        user => this.apiService.addToList(user.id, item.recipe_id)
-          .subscribe(res => this.messageService.add('Recipe added!')
-        )
-      );
-  }
 }
 
 

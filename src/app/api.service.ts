@@ -44,12 +44,19 @@ export class ApiService {
     return this.http.delete(`http://api.recipes.test/api/db/collections/${listId}`);
   }
 
-  addToList(userId, itemId): Observable<any> {
-    console.log('userId: ' + userId + ' itemId: ' + itemId);
-    return this.http.post(`http://api.recipes.test/api/db/list/add`, { 'user_id' : userId, 'recipe_id' : itemId });
+  addToList(list, item): Observable<any> {
+    console.log(item);
+    const name = item.recipe.title;
+    const apiId = item.recipe.recipe_id;
+    const imagePath = item.recipe.image_url;
+    const listId = list.id;
+    console.log(name, apiId, imagePath, listId);
+    return this.http.post(`http://api.recipes.test/api/db/recipes`, {
+      name, apiId, imagePath, listId
+    });
   }
 
-  removeFromList(userId, item): Observable<any> {
-    return this.http.delete(`http://api.recipes.test/api/db/list/${userId}/delete/${item}`);
+  removeFromList(recipeId): Observable<any> {
+    return this.http.delete(`http://api.recipes.test/api/db/recipes/${recipeId}`);
   }
 }
