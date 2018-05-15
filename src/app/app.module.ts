@@ -20,6 +20,7 @@ import { ListChildComponent } from './list-child/list-child.component';
 import { ListFormComponent } from './list-form/list-form.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RecipeDetailChildComponent } from './recipe-detail-child/recipe-detail-child.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RecipeDetailChildComponent } from './recipe-detail-child/recipe-detail-
     ListChildComponent,
     ListFormComponent,
     LogoutComponent,
-    RecipeDetailChildComponent
+    RecipeDetailChildComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
