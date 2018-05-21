@@ -1,0 +1,6 @@
+<span *ngIf="recipe">
+    {{ recipe | json }}
+</span>
+
+<app-recipe-detail-child [recipe]="recipe">
+</app-recipe-detail-child>

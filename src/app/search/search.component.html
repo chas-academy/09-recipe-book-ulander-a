@@ -1,0 +1,21 @@
+<h1>Search for recipes</h1>
+
+<form [formGroup]="searchForm">
+    
+  <input name="query" #query>
+
+  <button (click)="search(query)">Search</button>
+
+</form>
+
+<h2 *ngIf="results.length > 0">
+  Results:
+</h2>
+
+<ul>
+  <li *ngFor="let result of results">
+    <a routerLink="/recipe/{{ result.recipe_id }}">{{ result.title }}</a>
+  </li>
+</ul>
+
+<button disabled="true" *ngIf="results.length > 0" (click)="more()">More</button>

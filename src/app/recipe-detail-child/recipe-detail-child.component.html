@@ -1,0 +1,7 @@
+<h3>My lists</h3>
+<ul>
+  <li *ngFor="let list of lists">
+    {{ list | json }}
+    <button (click)="addToList(list)">Add this recipe to this list</button>
+  </li>
+</ul>

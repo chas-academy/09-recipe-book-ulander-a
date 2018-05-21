@@ -1,0 +1,25 @@
+<form [formGroup]="listForm" (ngSubmit)="createList()">
+  <h2>Create new list</h2>
+  <label for="name">name</label>
+  <input 
+  type="text" 
+  name="name" 
+  id="name" 
+  [formControl]="name">
+
+  <div [hidden]="name.valid || name.untouched">
+    <div>
+      The following problems have been found with the name:
+    </div>
+
+    <div [hidden]="!name.hasError('minlength')">
+      name can not be shorter than 3 characters.
+    </div>
+    <div [hidden]="!name.hasError('required')">
+      name is required.
+    </div>
+  </div>
+
+  <br>
+  <button type="submit">Create</button>
+</form>

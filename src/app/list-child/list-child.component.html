@@ -1,0 +1,18 @@
+<ng-container *ngIf="lists.length > 0; else elseTemplate">
+  <h3>My lists:</h3>
+  <ul>
+    <li *ngFor="let list of lists">
+      {{ list | json }}
+      <ul>
+        <li *ngFor="let recipe of list.recipes">
+          {{ recipe | json }}
+          <button (click)="deleteRecipe(recipe)">Remove</button>
+        </li>
+      </ul>
+      <button (click)="deleteList(list)">Remove</button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #elseTemplate>
+  You have no lists yet. Try adding some!
+</ng-template>
