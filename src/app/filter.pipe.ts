@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'capitalize'})
+@Pipe({ name: 'filter' })
 export class FilterPipe implements PipeTransform {
-  transform(value: string, args: string[]): any {
-    if (!value) {
-        return value;
+    transform(recipes: any, term: any) {
+        if (term === undefined) {
+            return recipes;
+        } else {
+            return recipes.filter(function(recipe) {
+                return recipe.title.toLowerCase().includes(term.toLowerCase());
+            });
+        }
     }
-
-    return value.replace(/\w\S*/g, function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  }
 }

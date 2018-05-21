@@ -4,7 +4,7 @@
     
   <input name="query" #query>
 
-    <button (click)="search(query)">Search</button>
+  <button (click)="search(query)">Search</button>
 
 </form>
 
@@ -18,4 +18,4 @@
   </li>
 </ul>
 
-<button *ngIf="results.length > 0" (click)="more()">More</button>
+<button disabled="true" *ngIf="results.length > 0" (click)="more()">More</button>

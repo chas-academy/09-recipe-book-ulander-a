@@ -1,6 +1,9 @@
 <h2>Featured recipes</h2>
-
-<div *ngFor="let recipe of recipes">
+<form id="filter">
+  <label>Filter recipes by name: </label>
+  <input type="text" [(ngModel)]="term" name="term">
+</form>
+<div *ngFor="let recipe of recipes | filter:term">
 
   <img src="{{ recipe.image_url }}" alt="Photo seems to be missing">
   <h2>
