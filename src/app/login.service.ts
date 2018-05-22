@@ -13,12 +13,12 @@ export class AuthService {
   }
 
   register(name: string, email: string, password: string) {
-    return this.http.post<Object>('http://api.recipes.test/api/auth/register', { name, email, password })
+    return this.http.post<Object>('https://young-eyrie-92940.herokuapp.com/api/auth/register', { name, email, password })
       .do(res => console.log(res));
   }
 
   login(email: string, password: string) {
-    return this.http.post<Object>('http://api.recipes.test/api/auth/login', { email, password })
+    return this.http.post<Object>('https://young-eyrie-92940.herokuapp.com/api/auth/login', { email, password })
       .do(res => this.setSession(res))
       .do(res => console.log(res))
       .shareReplay();
@@ -34,7 +34,7 @@ export class AuthService {
   getUser() {
     const token = localStorage.getItem('access_token');
 
-    return this.http.post<any>('http://api.recipes.test/api/auth/me?', { token });
+    return this.http.post<any>('https://young-eyrie-92940.herokuapp.com/api/auth/me?', { token });
   }
 
   logout() {
