@@ -1,6 +1,6 @@
 # RecipeBook
 
-Deployed at recipes.alveulander.chas.academy
+Deployed at (recipes.alveulander.chas.academy)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
 
